@@ -1,5 +1,21 @@
+#calccontainer{
+    height: 480px;
+    width: 320px;
+    margin: 0 auto;
+    border: 2px solid red; /*outline*/
+}
+
+
 #buttons{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
+}
+button{
+    height: 80px;
+    font-size: 22px;
+    font-weight: bolder;
+}
+.num{
+   
 }
