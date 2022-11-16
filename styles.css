@@ -2,9 +2,17 @@
     height: 480px;
     width: 320px;
     margin: 0 auto;
-    border: 2px solid red; /*outline*/
+    /* border: 2px solid red; outline */
 }
 
+
+input#resultpanel{
+    text-align: end;
+    font-size: 75px;
+    font-weight: bolder;
+    width: 100%;
+    box-sizing: border-box;
+}
 
 #buttons{
     display: grid;
@@ -13,8 +21,9 @@
 }
 button{
     height: 80px;
-    font-size: 22px;
-    font-weight: bolder;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 1px;
 }
 .num{
    
