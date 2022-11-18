@@ -8,8 +8,8 @@
 
 input#resultpanel{
     text-align: end;
-    font-size: 75px;
-    font-weight: bolder;
+    font-size: 70px;
+    font-weight: bold;
     width: 100%;
     box-sizing: border-box;
 }
