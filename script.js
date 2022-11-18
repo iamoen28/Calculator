@@ -37,3 +37,8 @@ function deleteNum(){
 function clearNum(){
     document.getElementById('resultpanel').value = '0';
 }
+
+function negateNum(){
+    let num = document.getElementById('resultpanel').value;
+    document.getElementById('resultpanel').value = num / -1;
+}
