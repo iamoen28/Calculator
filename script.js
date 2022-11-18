@@ -13,32 +13,41 @@
 //calculate(n1, operands, n2)
 //switch (operands) case + - * 
 
+function getPanelValue(){
+    return document.getElementById('resultpanel').value;
+}
+
+function setPanelValue(value){
+    document.getElementById('resultpanel').value = value;
+}
+
 function typeNum(e){
     //get current input value
-    let panel = document.getElementById('resultpanel').value;
+    let panel = getPanelValue();
+    let num = e.innerText;
     if(panel.length == 7){
         console.log(panel.length);
     }else if(panel == '0'){
-        document.getElementById('resultpanel').value = e.innerText;
+        setPanelValue(num);
     }else{
-        document.getElementById('resultpanel').value += e.innerText;
+        setPanelValue(getPanelValue() + num);
     }
 }
 
 function deleteNum(){
-    let panel = document.getElementById('resultpanel').value;
+    let panel = getPanelValue();
     if(panel.length > 1){
-    document.getElementById('resultpanel').value = panel.slice(0,-1);
+        setPanelValue(panel.slice(0,-1));
     }else{
-        document.getElementById('resultpanel').value = '0';
+        setPanelValue('0');
     }
 }
 
 function clearNum(){
-    document.getElementById('resultpanel').value = '0';
+    setPanelValue('0');
 }
 
 function negateNum(){
-    let num = document.getElementById('resultpanel').value;
-    document.getElementById('resultpanel').value = num / -1;
+    let num = getPanelValue();
+    setPanelValue(num / -1);
 }
