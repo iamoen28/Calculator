@@ -16,7 +16,9 @@
 function typeNum(e){
     //get current input value
     let panel = document.getElementById('resultpanel').value;
-    if(panel == '0'){
+    if(panel.length == 7){
+        console.log(panel.length);
+    }else if(panel == '0'){
         document.getElementById('resultpanel').value = e.innerText;
     }else{
         document.getElementById('resultpanel').value += e.innerText;
@@ -30,4 +32,8 @@ function deleteNum(){
     }else{
         document.getElementById('resultpanel').value = '0';
     }
+}
+
+function clearNum(){
+    document.getElementById('resultpanel').value = '0';
 }

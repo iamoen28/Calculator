@@ -5,13 +5,13 @@
     /* border: 2px solid red; outline */
 }
 
-
-input#resultpanel{
+input#resultpanel[readonly]{
     text-align: end;
     font-size: 70px;
     font-weight: bold;
     width: 100%;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 #buttons{
@@ -19,6 +19,7 @@ input#resultpanel{
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
 }
+
 button{
     height: 80px;
     font-size: 24px;
@@ -28,3 +29,4 @@ button{
 .num{
    
 }
+

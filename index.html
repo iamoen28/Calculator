@@ -12,11 +12,11 @@
     <div id="calccontainer">
         <form id="calcpanel">
             <!-- <input type="text" id="entrypanel"> -->
-            <input type="text" value="0" id="resultpanel">
+            <input type="text" value="0" id="resultpanel" readonly>
         </form> 
         <div id="buttons">
             <button class="func">CE</button>
-            <button class="func">C</button>
+            <button class="func" onclick="clearNum()">C</button>
             <button class="func" onclick="deleteNum()">DEL</button>
             <button class="operand">/</button>
             <button class="num" onclick="typeNum(this)">7</button>
