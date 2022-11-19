@@ -25,7 +25,7 @@ function typeNum(e){
     //get current input value
     let panel = getPanelValue();
     let num = e.innerText;
-    if(panel.length == 7){
+    if(panel.length == 7){//if has decimal point or sign
         console.log(panel.length);
     }else if(panel == '0'){
         setPanelValue(num);
@@ -50,4 +50,23 @@ function clearNum(){
 function negateNum(){
     let num = getPanelValue();
     setPanelValue(num / -1);
+}
+
+function decimalPoint(e){
+    let panel = getPanelValue();
+    let dot = e.innerText;
+    if(panel.match(/\./g)){
+
+    }else{
+        setPanelValue(getPanelValue() + dot);
+    }
+}
+
+function arithmetic(operand){
+    switch (operand){
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+    }
 }
