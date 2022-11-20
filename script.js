@@ -12,6 +12,7 @@
 
 //calculate(n1, operands, n2)
 //switch (operands) case + - * 
+let memory = 0;
 
 function getPanelValue(){
     return document.getElementById('resultpanel').value;
@@ -45,6 +46,7 @@ function deleteNum(){
 
 function clearNum(){
     setPanelValue('0');
+    memory = 0;
 }
 
 function negateNum(){
@@ -55,18 +57,30 @@ function negateNum(){
 function decimalPoint(e){
     let panel = getPanelValue();
     let dot = e.innerText;
-    if(panel.match(/\./g)){
-
-    }else{
+    if(!panel.match(/\./g)){
         setPanelValue(getPanelValue() + dot);
     }
 }
 
-function arithmetic(operand){
-    switch (operand){
-        case '+':
-        case '-':
-        case '*':
-        case '/':
+function calculate(operator){
+    let result;
+    if (memory == 0){
+        memory = Number(getPanelValue());//memory
+        setPanelValue('0');
+    }else{
+        let num = Number(getPanelValue());
+        switch (operator.innerText){
+            case '+':
+                result = memory + num;
+                memory = num;
+                setPanelValue(result);
+                break;
+            case '-':
+                break;
+            case 'x':
+                break;
+            case '/':
+                break;
+        }
     }
 }
