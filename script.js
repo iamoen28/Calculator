@@ -12,7 +12,7 @@
 
 //calculate(n1, operands, n2)
 //switch (operands) case + - * 
-let memory = 0;
+let memory = [];
 
 function getPanelValue(){
     return document.getElementById('resultpanel').value;
@@ -62,25 +62,26 @@ function decimalPoint(e){
     }
 }
 
-function calculate(operator){
-    let result;
-    if (memory == 0){
-        memory = Number(getPanelValue());//memory
-        setPanelValue('0');
-    }else{
-        let num = Number(getPanelValue());
-        switch (operator.innerText){
-            case '+':
-                result = memory + num;
-                memory = num;
-                setPanelValue(result);
-                break;
-            case '-':
-                break;
-            case 'x':
-                break;
-            case '/':
-                break;
-        }
+function captureData(e){
+    memory = [getPanelValue(), e.innerText];
+    setPanelValue('0');
+}
+
+function operate(){
+    let num1 = Number(memory[0]);
+    let num2 = Number(getPanelValue());
+    let operator = memory[1];
+    switch (operator){
+        case '+':
+            result = num1 + num2;
+            setPanelValue(result);
+            memory[0] = num2;
+            break;
+        case '-':
+            break;
+        case 'x':
+            break;
+        case '/':
+            break;
     }
 }
