@@ -37,7 +37,15 @@ function typeNum(e){
 
 function deleteNum(){
     let panel = getPanelValue();
-    if(panel.length > 1){
+    let len = panel.length;
+    if(panel.match(/\-/g)){
+        if(len>2){
+            setPanelValue(panel.slice(0,-1));
+        }else{
+            setPanelValue('0')
+        }
+    }
+    else if(!panel.match(/\-/g) == len > 1){
         setPanelValue(panel.slice(0,-1));
     }else{
         setPanelValue('0');
@@ -93,8 +101,14 @@ function operate(){
                 setPanelValue(result);
                 memory[0] = num2;
             }else{
-                setPanelValue('error');
+                setPanelValue("error");
             }
             break;
     }
 }
+
+//some bugs
+//digit limits shouldn't include sign or decimal point
+//long decimal point should round up depends on digit limit
+//problems with equals
+//w
