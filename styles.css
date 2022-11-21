@@ -1,17 +1,25 @@
 #calccontainer{
-    height: 480px;
+    height: 540px;
     width: 320px;
     margin: 0 auto;
-    /* border: 2px solid red; outline */
+    /*border: 2px solid red; outline*/
 }
 
-input#resultpanel[readonly]{
+#calcpanel{
+    display: flex;
+    flex-direction: column;
+}
+
+input#resultpanel[readonly], #entrypanel{
     text-align: end;
     font-size: 70px;
     font-weight: bold;
     width: 100%;
     box-sizing: border-box;
     cursor: pointer;
+}
+#entrypanel{
+    height: 30px;
 }
 
 #buttons{
