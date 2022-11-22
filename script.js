@@ -1,4 +1,6 @@
 let memory = [];
+let newInput = false;
+
 
 function getPanelValue(){
     return document.getElementById('resultpanel').value;
@@ -8,17 +10,31 @@ function setPanelValue(value){
     document.getElementById('resultpanel').value = value;
 }
 
+function getsecondaryPanelValue(){
+    return document.getElementById('entrypanel').value;
+}
+
+function setsecondaryPanelValue(value){
+    document.getElementById('entrypanel').value = value;
+}
+
 function typeNum(e){
     //get current input value
     let panel = getPanelValue();
     let num = e.innerText;
-    if(panel.length == 7){//if has decimal point or sign
-        console.log(panel.length);
-    }else if(panel == '0'){
+    if(newInput){
         setPanelValue(num);
+        newInput = false;
     }else{
-        setPanelValue(getPanelValue() + num);
+        if(panel.length == 7){//if has decimal point or sign
+            console.log(panel.length);
+        }else if(panel == '0'){
+            setPanelValue(num);
+        }else{
+            setPanelValue(getPanelValue() + num);
+        }
     }
+    
 }
 
 function deleteNum(){
@@ -40,6 +56,7 @@ function deleteNum(){
 
 function clearNum(){
     setPanelValue('0');
+    setsecondaryPanelValue('');
     memory = 0;
 }
 
@@ -59,29 +76,37 @@ function decimalPoint(e){
 function captureData(e){
     memory = [getPanelValue(), e.innerText];
     setPanelValue('0');
+    setsecondaryPanelValue(memory[0]+memory[1]);
 }
 
 function operate(){
     let num1 = Number(memory[0]);
     let num2 = Number(getPanelValue());
+    setsecondaryPanelValue(getsecondaryPanelValue()+num2);
+    
     let operator = memory[1];
     switch (operator){
         case '+':
+            setsecondaryPanelValue(getsecondaryPanelValue()+'=');
             result = num1 + num2;
             setPanelValue(result);
-            memory[0] = num2;
+            memory[0] = result;
+            newInput = true;
             break;
         case '-':
+            setsecondaryPanelValue(getsecondaryPanelValue()+'=');
             result = num1 - num2;
             setPanelValue(result);
             memory[0] = num2;
             break;
         case 'x':
+            setsecondaryPanelValue(getsecondaryPanelValue()+'=');
             result = num1 * num2;
             setPanelValue(result);
             memory[0] = num2;
             break;
         case '/':
+            setsecondaryPanelValue(getsecondaryPanelValue()+'=');
             if(num2 != 0){
                 result = num1 / num2;
                 setPanelValue(result);

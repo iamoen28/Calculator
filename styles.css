@@ -10,7 +10,7 @@
     flex-direction: column;
 }
 
-input#resultpanel[readonly], #entrypanel{
+input#resultpanel[readonly]{
     text-align: end;
     font-size: 70px;
     font-weight: bold;
@@ -18,8 +18,12 @@ input#resultpanel[readonly], #entrypanel{
     box-sizing: border-box;
     cursor: pointer;
 }
+
 #entrypanel{
     height: 30px;
+    text-align: end;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #buttons{
