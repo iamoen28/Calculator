@@ -33,8 +33,7 @@ function typeNum(e){
         }else{
             setPanelValue(getPanelValue() + num);
         }
-    }
-    
+    } 
 }
 
 function deleteNum(){
@@ -80,46 +79,51 @@ function captureData(e){
 }
 
 function operate(){
-    let num1 = Number(memory[0]);
-    let num2 = Number(getPanelValue());
-    setsecondaryPanelValue(getsecondaryPanelValue()+num2);
-    
-    let operator = memory[1];
-    switch (operator){
-        case '+':
-            setsecondaryPanelValue(getsecondaryPanelValue()+'=');
-            result = num1 + num2;
-            setPanelValue(result);
-            memory[0] = result;
-            newInput = true;
-            break;
-        case '-':
-            setsecondaryPanelValue(getsecondaryPanelValue()+'=');
-            result = num1 - num2;
-            setPanelValue(result);
-            memory[0] = num2;
-            break;
-        case 'x':
-            setsecondaryPanelValue(getsecondaryPanelValue()+'=');
-            result = num1 * num2;
-            setPanelValue(result);
-            memory[0] = num2;
-            break;
-        case '/':
-            setsecondaryPanelValue(getsecondaryPanelValue()+'=');
-            if(num2 != 0){
-                result = num1 / num2;
+    //equal should be clicked once
+        let num1 = Number(memory[0]);
+        let num2 = Number(getPanelValue());
+        setsecondaryPanelValue(getsecondaryPanelValue()+num2);
+        
+        let operator = memory[1];
+        switch (operator){
+            case '+':
+                setsecondaryPanelValue(getsecondaryPanelValue());
+                result = num1 + num2;
+                setPanelValue(result);
+                memory[0] = result;
+                newInput = true;
+                break;
+            case '-':
+                setsecondaryPanelValue(getsecondaryPanelValue());
+                result = num1 - num2;
                 setPanelValue(result);
                 memory[0] = num2;
-            }else{
-                setPanelValue("error");
-            }
-            break;
-    }
+                newInput = true;
+                break;
+            case 'x':
+                setsecondaryPanelValue(getsecondaryPanelValue());
+                result = num1 * num2;
+                setPanelValue(result);
+                memory[0] = num2;
+                newInput = true;
+                break;
+            case '/':
+                setsecondaryPanelValue(getsecondaryPanelValue());
+                if(num2 != 0){
+                    result = num1 / num2;
+                    setPanelValue(result);
+                    memory[0] = num2;
+                    newInput = true;
+                }else{
+                    setPanelValue("error");
+                    newInput = true;
+                }
+                break;
+        }
 }
 
 //some bugs
 //digit limits shouldn't include sign or decimal point
 //long decimal point should round up depends on digit limit
 //problems with equals
-//w
+//w 
