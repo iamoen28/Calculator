@@ -1,5 +1,11 @@
 let memory = [];
-let newInput = false;
+let num1;
+let num2;
+let operator = "";
+let newInput = true;
+
+const numberButtons = document.querySelectorAll('num');
+const operatorButtons = document.querySelectorAll('operator');
 
 
 function getPanelValue(){
@@ -19,24 +25,22 @@ function setsecondaryPanelValue(value){
 }
 
 function typeNum(e){
-    //get current input value
+    //function for inputting values
     let panel = getPanelValue();
     let num = e.innerText;
+
     if(newInput){
         setPanelValue(num);
         newInput = false;
     }else{
-        if(panel.length == 7){//if has decimal point or sign
-            console.log(panel.length);
-        }else if(panel == '0'){
-            setPanelValue(num);
-        }else{
+        if(panel.length <= 6){
             setPanelValue(getPanelValue() + num);
         }
-    } 
+    }
 }
 
 function deleteNum(){
+    //deleting inputted numbers
     let panel = getPanelValue();
     let len = panel.length;
     if(panel.match(/\-/g)){
@@ -44,27 +48,34 @@ function deleteNum(){
             setPanelValue(panel.slice(0,-1));
         }else{
             setPanelValue('0')
+            newInput = true;
         }
     }
     else if(!panel.match(/\-/g) == len > 1){
         setPanelValue(panel.slice(0,-1));
     }else{
         setPanelValue('0');
+        newInput = true;
     }
 }
 
 function clearNum(){
+    //clearing panels
     setPanelValue('0');
     setsecondaryPanelValue('');
     memory = 0;
+    operator = "";
+    newInput = true;
 }
 
 function negateNum(){
+    //negating a num
     let num = getPanelValue();
     setPanelValue(num / -1);
 }
 
 function decimalPoint(e){
+    //adding decimal point
     let panel = getPanelValue();
     let dot = e.innerText;
     if(!panel.match(/\./g)){
@@ -73,46 +84,50 @@ function decimalPoint(e){
 }
 
 function captureData(e){
-    memory = [getPanelValue(), e.innerText];
-    setPanelValue('0');
-    setsecondaryPanelValue(memory[0]+memory[1]);
+    //clicking an operand
+    num1 = getPanelValue();
+    operator = e.innerText;
+    if(!newInput){
+        newInput = true;
+    }else{
+        setsecondaryPanelValue(num1+operator);
+    }
+    setsecondaryPanelValue(num1+operator);
 }
 
 function operate(){
     //equal should be clicked once
-        let num1 = Number(memory[0]);
-        let num2 = Number(getPanelValue());
+    let num2 = getPanelValue();
+    if(!newInput){
         setsecondaryPanelValue(getsecondaryPanelValue()+num2);
-        
-        let operator = memory[1];
         switch (operator){
             case '+':
                 setsecondaryPanelValue(getsecondaryPanelValue());
-                result = num1 + num2;
+                result = Number(num1) + Number(num2);
                 setPanelValue(result);
-                memory[0] = result;
+                num1 = result;
                 newInput = true;
                 break;
             case '-':
                 setsecondaryPanelValue(getsecondaryPanelValue());
-                result = num1 - num2;
+                result = Number(num1) - Number(num2);
                 setPanelValue(result);
-                memory[0] = num2;
+                num1 = result;
                 newInput = true;
                 break;
             case 'x':
                 setsecondaryPanelValue(getsecondaryPanelValue());
-                result = num1 * num2;
+                result = Number(num1) * Number(num2);
                 setPanelValue(result);
-                memory[0] = num2;
+                num1 = result;
                 newInput = true;
                 break;
             case '/':
                 setsecondaryPanelValue(getsecondaryPanelValue());
                 if(num2 != 0){
-                    result = num1 / num2;
+                    result = Number(num1) / Number(num2);
                     setPanelValue(result);
-                    memory[0] = num2;
+                    num1 = result;
                     newInput = true;
                 }else{
                     setPanelValue("error");
@@ -120,10 +135,30 @@ function operate(){
                 }
                 break;
         }
+    }else if(newInput){
+
+    }
 }
 
-//some bugs
-//digit limits shouldn't include sign or decimal point
-//long decimal point should round up depends on digit limit
-//problems with equals
-//w 
+
+
+
+
+//need to fix
+//digit limits shouldn't include sign or decimal point - (design)
+//long decimal point should round up depends on digit limit - (design)
+//problems with equals, it should calculate the last operand used and number inputted - (function)
+//User interface - (design)
+//pressing equal simultaneously duplicates the number entered and appends to panel2 - (design)
+//keymapping - (design)
+//should be able to calculate a previous operation when clicking an operand - (function)
+
+
+
+//IDEA:
+//inputting a number ticks the boolean true, if not false
+//clicking an operand reverts the boolean to false and capture the type of operand
+//clicking equals validates the boolean if true or false
+//if true get new input as num2 if false use the last inputted number
+//calculate
+//sets the result as num1

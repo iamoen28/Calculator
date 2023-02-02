@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
 }
-
 input#resultpanel[readonly]{
     text-align: end;
     font-size: 70px;
