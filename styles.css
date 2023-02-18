@@ -1,43 +1,51 @@
-#calccontainer{
-    height: 540px;
-    width: 320px;
-    margin: 0 auto;
-    /*border: 2px solid red; outline*/
-}
-
-#calcpanel{
-    display: flex;
-    flex-direction: column;
-}
-input#resultpanel[readonly]{
-    text-align: end;
-    font-size: 70px;
-    font-weight: bold;
-    width: 100%;
+*, *::before, *::after {
     box-sizing: border-box;
-    cursor: pointer;
+    font-family: Roboto, sans-serif;
+    font-weight: normal;
 }
 
-#entrypanel{
-    height: 30px;
-    text-align: end;
-    font-size: 20px;
-    font-weight: bold;
+body{
+    padding: 0;
+    margin: 0;
 }
 
-#buttons{
+.calccontainer {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
 
-button{
-    height: 80px;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 1px;
-}
-.num{
-   
+.calccontainer > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
 }
 
+.calccontainer > button:hover {
+    background-color: rgba(170, 170, 170, 0.5);
+}
+
+.display-panel {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .80);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.display-panel .previous-operand {
+    color: antiquewhite;
+    font-size: 1.5rem;
+}
+
+.display-panel .current-operand {
+    color: white;
+    font-size: 2.5rem;
+}
