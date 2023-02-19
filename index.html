@@ -5,14 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script> 
+    <!-- should be with defer to run javascript after DOM was created -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="calccontainer">
         <div class="display-panel">
             <div data-prevops class="previous-operand"></div>
-            <div data-currentops class="current-operand">0asf</div>
+            <div data-currentops class="current-operand"></div>
         </div>
         <button data-clear-entry>CE</button>
         <button data-clear>C</button>
