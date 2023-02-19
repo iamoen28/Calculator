@@ -86,14 +86,14 @@ class Calculator{
 }
 
 const numberButtons = document.querySelectorAll('[data-number]');
-const operatorButton = document.querySelectorAll('button[data-operator]');
-const equalButton = document.querySelector('button[data-equals]');
-const negateButton = document.querySelector('button[data-negate]');
-const clearButton = document.querySelector('button[data-clear]');
-const deleteButton = document.querySelector('button[data-delete]');
-const clearEntryButton = document.querySelector('button[data-clear-entry]');
+const operatorButton = document.querySelectorAll('[data-operator]');
+const equalButton = document.querySelector('[data-equals]');
+const negateButton = document.querySelector('[data-negate]');
+const clearButton = document.querySelector('[data-clear]');
+const deleteButton = document.querySelector('[data-delete]');
+const clearEntryButton = document.querySelector('[data-clear-entry]');
 const currentOperandPanel = document.querySelector('[data-currentops]');
-const previousOperandPanel = document.querySelector('div[data-prevops]');
+const previousOperandPanel = document.querySelector('[data-prevops]');
 
 const calculator = new Calculator(currentOperandPanel, previousOperandPanel);
 
